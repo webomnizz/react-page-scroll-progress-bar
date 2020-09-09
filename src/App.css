@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
+html {
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+}
+  
+body {
+    background: #171414;
+    font-family: "Courier New", Courier, monospace;
+    color: #ffffff;
+    padding: 5% 15%;
+}
+  
+p {
+    font-size: 1.8rem;
+}
+  
+p:first-of-type {
+    margin-top: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#progressBarContainer {
+    position: fixed;
+    z-index: 10;
+    background: rgba(255,255,255,0.05);
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+  
+  
+#progressBar {
+    background: linear-gradient(to left, red, violet);
+    transform-origin: top left;
+    transform: scale(0,0);
+    opacity: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#progressBarContainer,
+#progressBar {
+    height: 10px;
 }
