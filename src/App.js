@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
 
+    const [scroll, setScroll] = useState(0);
+
     useEffect(() => {
 
         let progressBarHandler = () => {
+            
             const totalScroll = document.documentElement.scrollTop;
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scroll = `${totalScroll / windowHeight}`;
-            const progressBar = document.querySelector("#progressBar");
 
-            progressBar.style.transform = `scale(${scroll}, 1)`;
-            progressBar.style.opacity = `${scroll}`;
+            setScroll(scroll);
         }
 
-        window.addEventListener("scroll", progressBarHandler, {capture: true, passive: true});
+        window.addEventListener("scroll", progressBarHandler);
 
         return () => window.removeEventListener("scroll", progressBarHandler);
     });
@@ -23,7 +24,7 @@ function App() {
     return (
         <div className="App">
             <div id="progressBarContainer">
-                <div id="progressBar" />
+                <div id="progressBar" style={{transform: `scale(${scroll}, 1)`, opacity: `${scroll}`}} />
             </div>
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus est, pellentesque non libero quis, rutrum sagittis nisl. Maecenas convallis metus ex. Etiam feugiat est odio, vehicula fringilla justo faucibus vel. In hac habitasse platea dictumst. Fusce ac lectus nec nulla ornare convallis sed fermentum mi. Ut tellus nunc, lobortis vitae lectus sit amet, cursus luctus odio. Etiam in arcu quis lacus molestie dictum. Aenean convallis est diam, at elementum felis facilisis a. Morbi sit amet egestas est. Donec gravida odio eget tristique bibendum. Vivamus aliquet sed tortor sollicitudin scelerisque. Aliquam non mauris lacinia, molestie tortor ut, sagittis lectus. Aliquam vel mauris id odio efficitur tempus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
